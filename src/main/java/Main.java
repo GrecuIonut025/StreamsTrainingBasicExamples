@@ -16,13 +16,9 @@ public class Main {
         );
 
 
-        System.out.println("Creating a file that contains all the restaurants");
         createFileWithAllRestaurants(risto);
-        System.out.println("File created succesfull");
-        System.out.println("Starting to read from the file, all the restaurants will be printed soon");
         readAllTheRestaurantsFromFile();
-        System.out.println("Operation completed" + "\n");
-        System.out.println("Esercizio 1");
+        System.out.println("\nEsercizio 1");
         es1(risto);
 
         System.out.println("\nEsercizio 2");
@@ -54,12 +50,17 @@ public class Main {
 
     private static void readAllTheRestaurantsFromFile() {
         try {
+            System.out.println("\nWe are reading the file we have just created");
+            System.out.println("********************************************");
             BufferedReader reader = new BufferedReader(new FileReader("output.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line + "\n");
             }
             reader.close();
+            System.out.println("********************************************");
+            System.out.println("\nRead completed");
+            System.out.println("********************************************");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -67,14 +68,20 @@ public class Main {
 
     private static void createFileWithAllRestaurants(List<Ristorante> risto) {
         try {
+            System.out.println("********************************************");
+            System.out.println("\nCreating a file that contains all the restaurants");
             BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
             for (Ristorante r : risto) {
                 writer.write("\n" + r);
             }
 
             writer.close();
+            System.out.println("********************************************");
+            System.out.println("\nFile creation completed");
+            System.out.println("********************************************");
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("\nError creating file");
         }
     }
 
