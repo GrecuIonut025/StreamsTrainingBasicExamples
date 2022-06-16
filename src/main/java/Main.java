@@ -43,7 +43,14 @@ public class Main {
         es7(risto);
         System.out.println("\nEsercizio 8");
         es8(risto);
+        System.out.println("\nEsercizio 9");
+        es10(risto);
+        System.out.println("\nEsercizio 10");
+   restaurantWithMostCoperti(risto);
+
+
     }
+
 
     private static void readAllTheRestaurantsFromFile() {
         try {
@@ -71,7 +78,7 @@ public class Main {
         }
     }
 
-    private static void es1(List<Ristorante> lista) {
+    public static void es1(List<Ristorante> lista) {
         List<Ristorante> l = lista.stream()
                 .sorted(Comparator.comparing(Ristorante::getCoperti).reversed())
                 .collect(Collectors.toList());
@@ -140,5 +147,27 @@ public class Main {
 
     }
 
+    public static void es9(List<Ristorante> lista) {
+        List<Ristorante> ristorante = lista.stream()
+                .skip(3)
+                .limit(2)
+                .collect(Collectors.toList());
+        System.out.println(ristorante);
+    }
 
+    public static void es10(List<Ristorante> lista) {
+ List<Ristorante> ristorante=lista.stream()
+         .sorted(Comparator.comparing(Ristorante::getNome))
+         .collect(Collectors.toList());
+  ristorante.forEach(System.out::println);
+
+    }
+public static void restaurantWithMostCoperti(List<Ristorante>risto) {
+    Optional<String>restaurantWithMostCoperti=risto.stream()
+            .filter(r -> r.getTipo().equals(TipoRistorante.RISTO))
+            .max(Comparator.comparing(Ristorante::getCoperti))
+            .map(r -> r.getNome() + " " + r.getCoperti());
+    restaurantWithMostCoperti.ifPresent(System.out::println);
+
+}
 }
