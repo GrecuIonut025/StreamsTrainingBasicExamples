@@ -1,7 +1,7 @@
 
-Ristorante{nome='La pergola', tipo=RISTO, coperti=55}
+Ristorante{nome='La pergoladddddddddddddddddddd', tipo=RISTO, coperti=55}
 Ristorante{nome='L’etico', tipo=PIZZERIA, coperti=235}
-Ristorante{nome='Da Rossi', tipo=RISTO, coperti=47}
+Ristorante{nome='Da Rossi', tipo=RISTO, coperti=400}
 Ristorante{nome='Da Gigi', tipo=PIZZERIA, coperti=42}
 Ristorante{nome='Giggetto', tipo=PIZZERIA, coperti=80}
 Ristorante{nome='Da Ivo', tipo=PIZZERIA, coperti=150}

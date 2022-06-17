@@ -5,9 +5,9 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
         List<Ristorante> risto = Arrays.asList(
-                new Ristorante("La pergola", TipoRistorante.RISTO, 55),
+                new Ristorante("La pergoladddddddddddddddddddd", TipoRistorante.RISTO, 55),
                 new Ristorante("L’etico", TipoRistorante.PIZZERIA, 235),
-                new Ristorante("Da Rossi", TipoRistorante.RISTO, 47),
+                new Ristorante("Da Rossi", TipoRistorante.RISTO, 400),
                 new Ristorante("Da Gigi", TipoRistorante.PIZZERIA, 42),
                 new Ristorante("Giggetto", TipoRistorante.PIZZERIA, 80),
                 new Ristorante("Da Ivo", TipoRistorante.PIZZERIA, 150),
@@ -42,9 +42,9 @@ public class Main {
         System.out.println("\nEsercizio 9");
         es10(risto);
         System.out.println("\nEsercizio 10");
-   restaurantWithMostCoperti(risto);
-
-
+        restaurantWithMostCoperti(risto);
+        System.out.println("\nEsercizio 11");
+        test(risto);
     }
 
 
@@ -163,18 +163,29 @@ public class Main {
     }
 
     public static void es10(List<Ristorante> lista) {
- List<Ristorante> ristorante=lista.stream()
-         .sorted(Comparator.comparing(Ristorante::getNome))
-         .collect(Collectors.toList());
-  ristorante.forEach(System.out::println);
+        List<Ristorante> ristorante = lista.stream()
+                .sorted(Comparator.comparing(Ristorante::getNome))
+                .collect(Collectors.toList());
+        ristorante.forEach(System.out::println);
 
     }
-public static void restaurantWithMostCoperti(List<Ristorante>risto) {
-    Optional<String>restaurantWithMostCoperti=risto.stream()
-            .filter(r -> r.getTipo().equals(TipoRistorante.RISTO))
-            .max(Comparator.comparing(Ristorante::getCoperti))
-            .map(r -> r.getNome() + " " + r.getCoperti());
-    restaurantWithMostCoperti.ifPresent(System.out::println);
 
-}
+    public static void restaurantWithMostCoperti(List<Ristorante> risto) {
+        Optional<String> restaurantWithMostCoperti = risto.stream()
+                .filter(r -> r.getTipo().equals(TipoRistorante.RISTO))
+                .max(Comparator.comparing(Ristorante::getCoperti))
+                .map(r -> r.getNome() + " " + r.getCoperti());
+        restaurantWithMostCoperti.ifPresent(System.out::println);
+
+    }
+
+    public static void test(List<Ristorante> lista) {
+        List<String> rt = lista.stream()
+                .filter(r -> r.getTipo() == TipoRistorante.PIZZERIA)
+                .map(Ristorante::getNome)
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
+        rt.forEach(System.out::println);
+    }
+
 }
